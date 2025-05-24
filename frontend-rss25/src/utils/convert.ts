@@ -53,13 +53,15 @@ export const convertLeMondeRssToRss25SB = (sourceXml: string): string => {
     const date = new Date(dateRaw).toISOString()
     const dateTag = item.querySelector('updated') ? 'updated' : 'published'
     add(dateTag, date)
-
-    const media = item.querySelector('media\\:content')
+    const mediaNs = 'http://search.yahoo.com/mrss/'
+    const media = item.getElementsByTagNameNS(mediaNs,'content')[0]
+    console.log('io',media)
     if (media) {
+      console.log('ok')
       const img = feed.createElementNS(ns, 'image')
       const url = media.getAttribute('url') || ''
       img.setAttribute('href', url)
-      img.setAttribute('alt', media.querySelector('media\\:description')?.textContent?.slice(0, 128) || 'Image')
+      img.setAttribute('alt', media.getElementsByTagNameNS(mediaNs, 'description')[0]?.textContent?.slice(0, 128) || 'Image')
       img.setAttribute('type', url.endsWith('.png') ? 'png' : url.endsWith('.jpeg') ? 'jpeg' : 'jpg')
       itemNode.appendChild(img)
     }

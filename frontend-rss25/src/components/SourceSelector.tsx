@@ -10,6 +10,10 @@ const SourceSelector: React.FC<SourceSelectorProps> = ({ selectedSource, onChang
     {
       label: 'Le Monde (Sciences)',
       value: 'http://localhost:3001/proxy/lemonde',
+    },
+    {
+      label: 'Le Monde (Economie)',
+      value: 'http://localhost:3001/proxy/lemonde-economie',
     }
   ]
 

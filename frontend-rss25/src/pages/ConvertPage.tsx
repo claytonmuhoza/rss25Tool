@@ -70,13 +70,14 @@ const ConvertPage: React.FC = () => {
             {result.description && <p>Description : {result.description}</p>
           }
           </div>
-         <div>
-          <h3 className='font-semibold'>Flux RSS convertie</h3>
-          <pre className="whitespace-pre-wrap break-words text-sm">
-            {fluxRSS}
-          </pre>
-         </div>
-          
+          {result.status!="ERROR"&&
+            <div>
+              <h3 className='font-semibold'>Flux RSS convertie</h3>
+              <pre className="whitespace-pre-wrap break-words text-sm">
+                {fluxRSS}
+              </pre>
+            </div>
+          }
         </div>
       )}
     </div>
